@@ -36,6 +36,8 @@ public class Main {
         log.info("interrupt");
         c.interrupt();
 
+        service.shutdown();
+
 
 
 
