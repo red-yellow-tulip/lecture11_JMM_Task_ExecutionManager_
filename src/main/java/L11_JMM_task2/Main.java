@@ -1,5 +1,6 @@
 package L11_JMM_task2;
 
+import L11_JMM_task2.ExecutionManager.Context;
 import L11_JMM_task2.ExecutionManager.ExecutionManager;
 import L11_JMM_task2.Interfaces.IContext;
 import L11_JMM_task2.UserCallableImpl.UserCallableTask;
@@ -28,7 +29,7 @@ public class Main {
             list.add(new UserCallableTask(500));
 
         log.info("start");
-        IContext c = em.execute(new UserCallableTask(1000),list);
+        Context c = em.execute(new UserCallableTask(1000),list);
 
         log.info("sleep");
         TimeUnit.SECONDS.sleep(5);
@@ -36,7 +37,11 @@ public class Main {
         log.info("interrupt");
         c.interrupt();
 
+        TimeUnit.SECONDS.sleep(1);
+        log.info(c);
         service.shutdown();
+
+
 
 
 

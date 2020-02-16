@@ -21,11 +21,12 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         List<Thread> listTask = new ArrayList<>();
-
+        Task<Callable<Integer>> taskExec = new Task(new UserCallableTask(1000));
         for (int i = 0; i < countThread; i++)
-            listTask.add(   new Thread( () -> {
-                Task<Callable<Integer>> taskExec = new Task(new UserCallableTask(1000));
-                log.info("Результат расчетов: " + taskExec.get());
+            listTask.add(
+                    new Thread( () -> {
+                        //Task<Callable<Integer>> taskExec = new Task(new UserCallableTask(1000));   - так не работает volatile, но почему?
+                        log.info("Результат расчетов: " + taskExec.get());
             }));
 
         listTask.forEach((e) -> service.submit(e));

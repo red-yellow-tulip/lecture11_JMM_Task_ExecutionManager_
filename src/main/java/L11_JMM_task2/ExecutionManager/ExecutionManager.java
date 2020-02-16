@@ -14,7 +14,7 @@ public class ExecutionManager implements Runnable {
     private List<Future> listFuture = new LinkedList<>();
 
     // структура хранения статистических данныъ
-    private Context context = new Context();
+    private static final Context context = new Context();
     private ExecutorService service = null;
 
     public ExecutionManager(int size){
