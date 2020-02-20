@@ -25,7 +25,6 @@ public class Main {
         for (int i = 0; i < countThread; i++)
             listTask.add(
                     new Thread( () -> {
-                        //Task<Callable<Integer>> taskExec = new Task(new UserCallableTask(1000));   - так не работает volatile, но почему?
                         try {
                             log.info("Результат расчетов: " + taskExec.get());
                         } catch (Exception e){
